@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<!--This html file is for login page display
+When you put link the first page will be displayed to you --> 
+<head>
+<title>Marzia Login Page</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="/images/loginform.css" />
+</head>
+
+<body>
+<div class="wrapper">
+	<header>
+		<div id="logo"></div>
+	</header>
+	<div class="user">
+	<!-- 	<div id="company_name">Company Name</div>
+		<div id="profile_photo"></div>
+		<div class="user_logout">
+			<p id="user_name">User 1</p>
+			<p id="logout"><a href="#">Logout</a></p>
+		</div>  -->
+	</div>
+	
+	
+	<div th:if="${param.error}">Invalid username and password.</div>
+	<div th:if="${param.logout}">You have been logged out.</div>
+	
+	<form th:action="@{/login}" method="post">
+		<div class="login-div">
+			<table class="userName">
+			<tr> 
+			<td>User Name : </td>  
+			<td> <input type="text" class="clearable" name="username" autofocus="true"/> </td>
+			</tr>
+			<tr>
+			<td style="padding-top:20px">Password: </td>
+			<td style="padding-top:20px"><input type="password" class="clearable" name="password" /> </td>
+			 
+			</tr>
+			<tr> <td><input class="submit-button"
+				type="submit" value="SIGN IN" /> </td>
+				</tr>
+				<tr>
+		       <td colspan="2" align="center">
+		       		<a th:href="@{/captureEmail}">Forgot Password?</a>
+		  		</td>
+		       </tr>
+			</table>
+		</div>
+	</form>
+	</div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+spring:
+ profiles.active: local
+
+---
+spring:
+ profiles: local
+ datasource:
+  driverClassName: org.postgresql.Driver
+  url: jdbc:postgresql://127.0.0.1:5432/
+  username: ${DB_USERID:postgres}
+  password: ${DB_PASSWD:postgres}
+  accessToUnderlyingConnectionAllowed: true
+ config:
+  location: /mapper/*.xml
+server:
+ port: 8092
+ session:
+  timeout: 86400
+mybatis:
+  mapper-locations:
+    0: mapper/UsersMapper.xml
+    1: mapper/UserRolesMapper.xml

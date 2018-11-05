@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+  
+  <classPathEntry
+  location="C:\Users\Marzia_Server\postgresql-42.2.5.jar" />
+  
+        <context id="marzia" targetRuntime="MyBatis3">
+
+                <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+                <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin" />
+                <plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+
+                <jdbcConnection driverClass="org.postgresql.Driver"
+                        connectionURL="jdbc:postgresql://127.0.0.1:5432/"
+                        userId="postgres" password="postgres" />
+
+                <javaModelGenerator targetPackage="com.marzia.webserver.dao.model"
+                        targetProject="webserver/src/main/java">
+                        <property name="enableSubPackages" value="true" />
+                        <property name="trimStrings" value="true" />
+                </javaModelGenerator>
+
+                <sqlMapGenerator targetPackage="mapper" targetProject="webserver/src/main/resources">
+                        <property name="enableSubPackages" value="true" />
+                </sqlMapGenerator>
+
+                <javaClientGenerator targetPackage="com.marzia.webserver.dao.repository"
+                        targetProject="webserver/src/main/java" type="XMLMAPPER">
+                        <property name="enableSubPackages" value="true" />
+                </javaClientGenerator>
+
+                <table tableName="users" domainObjectName="Users" 
+                        enableSelectByPrimaryKey="true" enableSelectByExample="true"
+                        enableInsert="true"
+                        enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true"
+                        enableDeleteByExample="true" enableCountByExample="false"
+                        enableUpdateByExample="true" modelType="flat">
+                        <generatedKey column="user_id" sqlStatement="JDBC" identity="true" />
+                </table>
+                
+                <table tableName="user_roles" domainObjectName="UserRoles" 
+                        enableSelectByPrimaryKey="true" enableSelectByExample="true"
+                        enableInsert="true"
+                        enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true"
+                        enableDeleteByExample="true" enableCountByExample="false"
+                        enableUpdateByExample="true" modelType="flat">
+                        <generatedKey column="user_role_id" sqlStatement="JDBC" identity="true" />
+                </table>
+
+        </context>
+</generatorConfiguration>
+
