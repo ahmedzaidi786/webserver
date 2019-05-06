@@ -2,10 +2,172 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-<title>Marzia Login Page</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<title>Marzia Home Page</title>
 </head>
+<style>
+.logoutLblPos{
+
+   position:fixed;
+   right:10px;
+   top:5px;
+}
+.button {
+  padding: 3px 14px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 5px #9CE;
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
 <body>
-<div>test</div>
+<table style="border:solid; height:-webkit-fill-available; width:100%">
+	<tr>
+		<td style="border:solid; height:10%; background-color:black; text-align:center;padding:0px">
+		<table style="height:100%; width:100%">
+		<tr>
+		<td style="height:100%; width:100%"> <img src="images/logo2.png" style="float:left" />
+		<button class="button">NEW PATIENT</button>
+		<a href="#" class="btn btn-info btn-lg" style="float:right">
+          <span class="glyphicon glyphicon-log-out"></span> Log out
+        </a>
+		</td>
+		</tr>
+		</table>
+		</td>
+	</tr>
+	<tr>
+		<td style="height:20%; padding:0px">
+		<table style="height:100%;width:100%">
+		<tr>
+		<td style="border:solid; text-align:-webkit-center">
+			
+			<p><b>Case Number:</b><input placeholder="Enter Case Number" style="width:30%" class="w3-input w3-border w3-hover-blue" type="text"/></p>
+			
+			<p><b>First Name :</b><input placeholder="Enter First Name" style="width:30%" class="w3-input w3-border w3-hover-blue" type="text"/></p>
+			
+			<p><b>Last Name :</b><input placeholder="Enter Last Name" style="width:30%" class="w3-input w3-border w3-hover-blue" type="text"/></p>
+			
+			<p><b>Mobile Number :</b><input placeholder="Enter Mobile Number" style="width:30%" class="w3-input w3-border w3-hover-blue" type="text"/></p>
+		</td>
+		<td style="border:solid; text-align:-webkit-center">
+ 			
+			<p><b>Email Address :</b><input placeholder="Enter Email Address" style="width:30%" class="w3-input w3-border w3-hover-blue" type="text"/></p>
+			
+			<p><b>Home Address :</b><input placeholder="Enter Home Address" style="width:30%" class="w3-input w3-border w3-hover-blue" type="text"/></p>
+			
+			<p><b>Bar Code :</b><input placeholder="Enter Bar Code" style="width:30%" class="w3-input w3-border w3-hover-blue" type="text"/></p>
+		</td>
+		</tr>
+		</table>
+		</td>
+	</tr>
+	<tr>
+		<td style="border:solid;padding:0px">
+			<table style="height:100%;width:100%">
+				<tr>
+					<td style="border:solid">
+						<table style="height:100%;width:100%">
+						  <tr>
+						    <th>Case no:</th>
+						    <th>First Name</th>
+						    <th>Last Name</th>
+						    <th>Profile Image</th>
+						     <th>Word File</th>
+						  </tr>
+						  <tr>
+						    <td>Alfreds Futterkiste</td>
+						    <td>Maria Anders</td>
+						    <td>Germany</td>
+						    <td>Germany</td>
+						    <td>Germany</td>
+
+						  </tr>
+						  <tr>
+						    <td>Centro comercial Moctezuma</td>
+						    <td>Francisco Chang</td>
+						  </tr>
+						  <tr>
+						    <td>Ernst Handel</td>
+						    <td>Roland Mendel</td>
+						    <td>Austria</td>
+						    <td>Germany</td>
+						  </tr>
+						  <tr>
+						    <td>Island Trading</td>
+						    <td>Helen Bennett</td>
+						    <td>UK</td>
+						  </tr>
+						  <tr>
+						    <td>Laughing Bacchus Winecellars</td>
+						    <td>Yoshi Tannamuri</td>
+						    <td>Canada</td>
+						  </tr>
+						  <tr>
+						    <td>Magazzini Alimentari Riuniti</td>
+						    <td>Giovanni Rovelli</td>
+						    <td>Italy</td>
+						  </tr>
+						  <tr>
+						    <td>Magazzini Alimentari Riuniti</td>
+						    <td>Giovanni Rovelli</td>
+						    <td>Italy</td>
+						  </tr>
+						  <tr>
+						    <td>Magazzini Alimentari Riuniti</td>
+						    <td>Giovanni Rovelli</td>
+						    <td>Italy</td>
+						  </tr>
+						  <tr>
+						    <td>Magazzini Alimentari Riuniti</td>
+						    <td>Giovanni Rovelli</td>
+						    <td>Italy</td>
+						  </tr>
+						  <tr>
+						    <td>Magazzini Alimentari Riuniti</td>
+						    <td>Giovanni Rovelli</td>
+						    <td>Italy</td>
+						  </tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+
+</table>
 
 </body>
 </html>
