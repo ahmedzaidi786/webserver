@@ -60,7 +60,7 @@
                         <generatedKey column="casenumber" sqlStatement="JDBC" identity="true" />
                 </table>
                 
-                <table tableName="ratebook" domainObjectName="Ratebook" 
+                <table tableName="ratebook" domainObjectName="RateBook" 
                         enableSelectByPrimaryKey="true" enableSelectByExample="true"
                         enableInsert="true"
                         enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true"
@@ -69,13 +69,12 @@
                         <generatedKey column="sno" sqlStatement="JDBC" identity="true" />
                 </table>
                 
-                <table tableName="patientvisit" domainObjectName="Patientvisit" 
+                <table tableName="patientvisit" domainObjectName="PatientVisit" 
                         enableSelectByPrimaryKey="true" enableSelectByExample="true"
                         enableInsert="true"
                         enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true"
                         enableDeleteByExample="true" enableCountByExample="false"
                         enableUpdateByExample="true" modelType="flat">
-                        <generatedKey column="casenumber" sqlStatement="JDBC" identity="true" />
                 </table>
 
         </context>

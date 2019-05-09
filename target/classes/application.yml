@@ -21,5 +21,5 @@ mybatis:
   0: mapper/UsersMapper.xml
   1: mapper/UserRolesMapper.xml
   2: mapper/PatientsMapper.xml
-  3: mapper/RatebookMapper.xml
-  4: mapper/PatientvisitMapper.xml
+  3: mapper/RateBookMapper.xml
+  4: mapper/PatientVisitMapper.xml
