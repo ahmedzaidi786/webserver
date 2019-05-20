@@ -19,17 +19,17 @@
                         userId="postgres" password="postgres" />
 
                 <javaModelGenerator targetPackage="com.marzia.webserver.dao.model"
-                        targetProject="C:\Users\Marzia_Server\eclipse-workspace\webserver\src\main\java">
+                        targetProject="webserver\src\main\java">
                         <property name="enableSubPackages" value="true" />
                         <property name="trimStrings" value="true" />
                 </javaModelGenerator>
 
-                <sqlMapGenerator targetPackage="mapper" targetProject="C:\Users\Marzia_Server\eclipse-workspace\webserver\src\main\resources">
+                <sqlMapGenerator targetPackage="mapper" targetProject="webserver\src\main\resources">
                         <property name="enableSubPackages" value="true" />
                 </sqlMapGenerator>
 
                 <javaClientGenerator targetPackage="com.marzia.webserver.dao.repository"
-                        targetProject="C:\Users\Marzia_Server\eclipse-workspace\webserver\src\main\java" type="XMLMAPPER">
+                        targetProject="webserver\src\main\java" type="XMLMAPPER">
                         <property name="enableSubPackages" value="true" />
                 </javaClientGenerator>
 
@@ -70,9 +70,8 @@
                 </table>
                 
                 <table tableName="patientvisit" domainObjectName="PatientVisit" 
-                        enableSelectByPrimaryKey="true" enableSelectByExample="true"
+                        enableSelectByExample="true"
                         enableInsert="true"
-                        enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true"
                         enableDeleteByExample="true" enableCountByExample="false"
                         enableUpdateByExample="true" modelType="flat">
                 </table>
