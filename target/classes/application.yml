@@ -10,6 +10,11 @@ spring:
   username: ${DB_USERID:postgres}
   password: ${DB_PASSWD:postgres}
   accessToUnderlyingConnectionAllowed: true
+  testOnBorrow: true
+  setTestWhileIdle: true
+  setTestOnReturn: true
+  timeBetweenEvictionRunsMillis: 60000
+  validationQuery: SELECT 1
  config:
   location: /mapper/*.xml
 server:
@@ -18,8 +23,8 @@ server:
   timeout: 86400
 mybatis:
   mapper-locations:
-  0: mapper/UsersMapper.xml
-  1: mapper/UserRolesMapper.xml
-  2: mapper/PatientsMapper.xml
-  3: mapper/RateBookMapper.xml
-  4: mapper/PatientVisitMapper.xml
+   0: mapper/UsersMapper.xml
+   1: mapper/UserRolesMapper.xml
+   2: mapper/PatientsMapper.xml
+   3: mapper/RateBookMapper.xml
+   4: mapper/PatientVisitMapper.xml

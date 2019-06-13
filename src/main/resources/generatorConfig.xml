@@ -19,17 +19,17 @@
                         userId="postgres" password="postgres" />
 
                 <javaModelGenerator targetPackage="com.marzia.webserver.dao.model"
-                        targetProject="webserver\src\main\java">
+                        targetProject="C:\Users\Marzia_Server\eclipse-workspace\webserver\src\main\java">
                         <property name="enableSubPackages" value="true" />
                         <property name="trimStrings" value="true" />
                 </javaModelGenerator>
 
-                <sqlMapGenerator targetPackage="mapper" targetProject="webserver\src\main\resources">
+                <sqlMapGenerator targetPackage="mapper" targetProject="C:\Users\Marzia_Server\eclipse-workspace\webserver\src\main\resources">
                         <property name="enableSubPackages" value="true" />
                 </sqlMapGenerator>
 
                 <javaClientGenerator targetPackage="com.marzia.webserver.dao.repository"
-                        targetProject="webserver\src\main\java" type="XMLMAPPER">
+                        targetProject="C:\Users\Marzia_Server\eclipse-workspace\webserver\src\main\java" type="XMLMAPPER">
                         <property name="enableSubPackages" value="true" />
                 </javaClientGenerator>
 
