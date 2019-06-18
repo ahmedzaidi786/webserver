@@ -33,7 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.headers().frameOptions().sameOrigin().and().authorizeRequests().antMatchers("/images/*", "/getSiteDetails", "/captureEmail", "/resetPassword", "/verifyAndSendEmail", "/changePassword")
 				.permitAll().anyRequest().fullyAuthenticated().and().formLogin().loginPage("/login")
-				.defaultSuccessUrl("/home.html", true).permitAll().and().logout().permitAll();
+				.defaultSuccessUrl("/home.html", true).permitAll().and().logout().logoutSuccessUrl("/logOut.html").permitAll();
 	}
 
 	@Autowired

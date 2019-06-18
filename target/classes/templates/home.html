@@ -1,12 +1,14 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+	<link rel="stylesheet" type="text/css" href="/static/css/main.css" />
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
 <title>Marzia Home Page</title>
 </head>
 <style>
@@ -53,14 +55,14 @@ tr:nth-child(even) {
 }
 </style>
 <body>
-<table style="border:solid; height:-webkit-fill-available; width:100%">
+<table style="height:-webkit-fill-available; width:100%">
 	<tr>
-		<td style="border:solid; height:10%; background-color:black; text-align:center;padding:0px">
+		<td style="height:10%;text-align:center;padding:0px">
 		<table style="height:100%; width:100%">
 		<tr>
 		<td style="height:100%; width:100%"> <img src="images/logo2.png" style="float:left" />
-		<button class="button">NEW PATIENT</button>
-		<a href="#" class="btn btn-info btn-lg" style="float:right">
+		<button class="button" onclick="window.location.href='newPatient.html'">NEW PATIENT</button>
+		<a href="logout" class="btn btn-info btn-lg" style="float:right">
           <span class="glyphicon glyphicon-log-out"></span> Log out
         </a>
 		</td>
@@ -72,7 +74,7 @@ tr:nth-child(even) {
 		<td style="height:20%; padding:0px">
 		<table style="height:100%;width:100%">
 		<tr>
-		<td style="border:solid; text-align:-webkit-center">
+		<td style="text-align:-webkit-center">
 			
 			<p><b>Case Number:</b><input placeholder="Enter Case Number" style="width:30%" class="w3-input w3-border w3-hover-blue" type="text"/></p>
 			
@@ -82,7 +84,7 @@ tr:nth-child(even) {
 			
 			<p><b>Mobile Number :</b><input placeholder="Enter Mobile Number" style="width:30%" class="w3-input w3-border w3-hover-blue" type="text"/></p>
 		</td>
-		<td style="border:solid; text-align:-webkit-center">
+		<td style=" text-align:-webkit-center">
  			
 			<p><b>Email Address :</b><input placeholder="Enter Email Address" style="width:30%" class="w3-input w3-border w3-hover-blue" type="text"/></p>
 			
@@ -95,7 +97,7 @@ tr:nth-child(even) {
 		</td>
 	</tr>
 	<tr>
-		<td style="border:solid;padding:0px">
+		<td style="padding:0px">
 			<table style="height:100%;width:100%">
 				<tr>
 					<td style="border:solid">

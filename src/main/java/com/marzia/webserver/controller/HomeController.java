@@ -21,4 +21,16 @@ public class HomeController {
 		log.info("home: " + req);
 		return "home";
 	}
+	
+	@RequestMapping(value = "/newPatient", method = RequestMethod.GET)
+	public String newPatient(HttpServletRequest req) {
+		log.info("newPatient: " + req);
+		return "newPatient";
+	}
+	
+	@RequestMapping(value = "/logOut", method = RequestMethod.GET)
+	public String logOut(HttpServletRequest req) {
+		log.info("logOut: " + req);
+		return "logout";
+	}
 }

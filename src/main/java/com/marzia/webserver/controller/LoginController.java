@@ -39,7 +39,7 @@ public class LoginController {
 		if (auth != null) {
 			new SecurityContextLogoutHandler().logout(request, response, auth);
 		}
-		return "redirect:/login?logout";// You can redirect wherever you want,
+		return "redirect:/logOut?logout";// You can redirect wherever you want,
 										// but generally it's a good practice to
 										// show login screen again.
 	}
