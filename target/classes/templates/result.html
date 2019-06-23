@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Handling Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Result</h1>
+    <p th:text="'FirstName: ' + ${patients.firstname}" />
+    <p th:text="'Last name: ' + ${patients.lastname}" />
+    <p th:text="'Mobile: ' + ${patients.mobile}" />
+    <p th:text="'Email: ' + ${patients.email}" />
+    <p th:text="'Address: ' + ${patients.address}" />
+    <p th:text="'File no.: ' + ${patients.fileno}" />
+  	<p th:text="'Patient since: ' + ${patients.since}" />  
+    <p th:text="'Bar Code: ' + ${patients.barcode}" />
+    <a href="/newPatient">Submit another message</a>
+</body>
+</html>

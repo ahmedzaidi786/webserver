@@ -1,29 +1,143 @@
 <!DOCTYPE html>
 <html>
-	<link rel="stylesheet" type="text/css" href="C:/Users/Marzia_Server/eclipse-workspace/webserver/src/main/resources/static/css/main.css" />
-
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="_csrf" th:content="${_csrf.token}"/>
+  <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <head>
+</head>
 <title>New Patient</title>
 </head>
+<style>
+.logoutLblPos{
+
+   position:fixed;
+   right:10px;
+   top:5px;
+}
+.button {
+  padding: 3px 14px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 5px #9CE;
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
 <body>
+<form action="#" th:action="@{/newPatient}" th:object="${newPatient}" method="POST">
 <table style="height:-webkit-fill-available; width:100%">
 <tr>
 		<td style="height:10%;text-align:center;padding:0px">
-		<table style="height:100%; width:100%">
-		<tr>
-		<td style="height:100%; width:100%"> <img src="images/logo2.png" style="float:left" />
-		<a href="#" class="btn btn-info btn-lg" style="float:right">
-          <span class="glyphicon glyphicon-log-out"></span> Log out
-        </a>
-		</td>
-		</tr>
-		</table>
+			<table style="height:100%; width:100%">
+			<tr>
+				<td style="height:100%; width:100%"> <img src="images/logo2.png" style="float:left" />
+				<td>
+					<a style="text-transform:capitalize;"><b>Welcome <span id="user_name" th:text="${#httpServletRequest.remoteUser}" /></b></a>
+				</td>
+				<td>
+				<a href="logout" class="btn btn-info btn-lg" style="float:right">
+	          		<span class="glyphicon glyphicon-log-out"></span> Log out</a>
+	        	</td>
+	        </td>
+			</tr>
+			</table>
 		</td>
 	</tr>
 	<tr>
 		<td>
+		<p>First name: <input type="text" th:field="*{firstname}" /></p>
+		<p>Last name: <input type="text" th:field="*{lastname}" /></p>
+ 		<p>Mobile: <input type="number" th:field="*{mobile}" /></p>
+		<p>Email: <input type="email" th:field="*{email}" /></p>
+		<p>Address: <input type="text" th:field="*{address}" /></p>
+		<p>file no: <input type="text" th:field="*{fileno}" /></p>
+		<p>Patient Since: <input type="date" th:field="*{since}"/></p> 
+		<p>Bar code: <input type="text" th:field="*{barcode}" /></p> 
+		<p><input type="button" value="Submit" onclick="submitForm()"/></p>
 		</td>
 	</tr>
 </table>
+</form>
+
+<script>
+/*<![CDATA[*/
+window.onload = function(e){
+	var token = $("meta[name='_csrf']").attr("content");
+	var header = $("meta[name='_csrf_header']").attr("content");
+	$(document).ajaxSend(function(e, xhr, options) {
+	  xhr.setRequestHeader(header, token);
+	});
+	  
+	var today = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth() + 1; //January is 0!
+
+	var yyyy = today.getFullYear();
+	
+	if (mm < 10)
+		mm = '0' + mm;
+	
+	if (dd < 10)
+		dd = '0' + dd;
+
+	var today = yyyy + '-' + mm + '-' + dd;
+	document.getElementById("since").value = today;
+}
+function submitForm(){
+	var data = {
+			firstname : document.getElementById("firstname").value,
+			lastname : document.getElementById("lastname").value,
+			mobile : document.getElementById("mobile").value,
+			email : document.getElementById("email").value,
+			address : document.getElementById("address").value,
+			fileno : document.getElementById("fileno").value,
+			since : new Date(document.getElementById("since").value),
+			barcode : document.getElementById("barcode").value,
+	}
+	$.ajax({
+		  type: "POST",
+		  url: "/newPatientSubmit",
+		  data: data,
+		  success: function(data,status){
+		      alert("Data: " + data + "\nStatus: " + status);
+		    },
+		  dataType: 'json'
+		});
+}
+/*]]>*/
+</script>
+
 </body>
 </html>
