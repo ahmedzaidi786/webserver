@@ -1,7 +1,6 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-	<link rel="stylesheet" type="text/css" href="/static/css/main.css" />
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
@@ -54,7 +53,7 @@ tr:nth-child(even) {
   background-color: #dddddd;
 }
 </style>
-<body>
+<body onload="patientSearch()">
 <table style="height:-webkit-fill-available; width:100%">
 	<tr>
 		<td style="height:10%;text-align:center;padding:0px">
@@ -64,7 +63,7 @@ tr:nth-child(even) {
 			<table>
 			<tr>
 			<td>
-			<img src="images/logo2.png" style="float:left" />
+			<img src="images/logo2.png" style="float:left"/>
 			</td>
 			<td>
 			<a style="text-transform:capitalize;"><b>Welcome <span id="user_name" th:text="${#httpServletRequest.remoteUser}" /></b></a>
@@ -90,21 +89,23 @@ tr:nth-child(even) {
 		<tr>
 		<td style="text-align:-webkit-center">
 			
-			<p><b>Case Number:</b><input placeholder="Enter Case Number" style="width:30%" class="w3-input w3-border w3-hover-blue" type="text"/></p>
+			<p><b>Case Number:</b><input id="caseNumber" style="width:30%" class="w3-input w3-border w3-hover-blue" type="number" oninput="patientSearch()"/></p>
 			
-			<p><b>First Name :</b><input placeholder="Enter First Name" style="width:30%" class="w3-input w3-border w3-hover-blue" type="text"/></p>
+			<p><b>First Name :</b><input id="firstname" style="width:30%" class="w3-input w3-border w3-hover-blue" type="text" oninput="patientSearch()" /></p>
 			
-			<p><b>Last Name :</b><input placeholder="Enter Last Name" style="width:30%" class="w3-input w3-border w3-hover-blue" type="text"/></p>
+			<p><b>Last Name :</b><input id="lastname" style="width:30%" class="w3-input w3-border w3-hover-blue" type="text"  oninput="patientSearch()"/></p>
 			
-			<p><b>Mobile Number :</b><input placeholder="Enter Mobile Number" style="width:30%" class="w3-input w3-border w3-hover-blue" type="text"/></p>
+			<p><b>Mobile Number :</b><input id="cell" style="width:30%" class="w3-input w3-border w3-hover-blue" type="number" oninput="patientSearch()"/></p>
 		</td>
 		<td style=" text-align:-webkit-center">
  			
-			<p><b>Email Address :</b><input placeholder="Enter Email Address" style="width:30%" class="w3-input w3-border w3-hover-blue" type="text"/></p>
+			<p><b>Email Address :</b><input id="email" style="width:30%" class="w3-input w3-border w3-hover-blue" type="text" oninput="patientSearch()"/></p>
 			
-			<p><b>Home Address :</b><input placeholder="Enter Home Address" style="width:30%" class="w3-input w3-border w3-hover-blue" type="text"/></p>
+			<p><b>Home Address :</b><input id="address" style="width:30%" class="w3-input w3-border w3-hover-blue" type="text" oninput="patientSearch()"/></p>
 			
-			<p><b>Bar Code :</b><input placeholder="Enter Bar Code" style="width:30%" class="w3-input w3-border w3-hover-blue" type="text"/></p>
+			<p><b>Bar Code :</b><input id="barcode" style="width:30%" class="w3-input w3-border w3-hover-blue" type="number" oninput="patientSearch()" /></p>
+			
+			<p><b>SurName/File NO. :</b><input id="fileno" style="width:30%" class="w3-input w3-border w3-hover-blue" type="text" oninput="patientSearch()" /></p>
 		</td>
 		</tr>
 		</table>
@@ -112,70 +113,13 @@ tr:nth-child(even) {
 	</tr>
 	<tr>
 		<td style="padding:0px">
-			<table style="height:100%;width:100%">
+			<table id="pList">
 				<tr>
 					<td style="border:solid">
-						<table style="height:100%;width:100%">
-						  <tr>
-						    <th>Case no:</th>
-						    <th>First Name</th>
-						    <th>Last Name</th>
-						    <th>Profile Image</th>
-						     <th>Word File</th>
-						  </tr>
-						  <tr>
-						    <td>Alfreds Futterkiste</td>
-						    <td>Maria Anders</td>
-						    <td>Germany</td>
-						    <td>Germany</td>
-						    <td>Germany</td>
+						<table id="tab" style="cursor:pointer">
 
-						  </tr>
-						  <tr>
-						    <td>Centro comercial Moctezuma</td>
-						    <td>Francisco Chang</td>
-						  </tr>
-						  <tr>
-						    <td>Ernst Handel</td>
-						    <td>Roland Mendel</td>
-						    <td>Austria</td>
-						    <td>Germany</td>
-						  </tr>
-						  <tr>
-						    <td>Island Trading</td>
-						    <td>Helen Bennett</td>
-						    <td>UK</td>
-						  </tr>
-						  <tr>
-						    <td>Laughing Bacchus Winecellars</td>
-						    <td>Yoshi Tannamuri</td>
-						    <td>Canada</td>
-						  </tr>
-						  <tr>
-						    <td>Magazzini Alimentari Riuniti</td>
-						    <td>Giovanni Rovelli</td>
-						    <td>Italy</td>
-						  </tr>
-						  <tr>
-						    <td>Magazzini Alimentari Riuniti</td>
-						    <td>Giovanni Rovelli</td>
-						    <td>Italy</td>
-						  </tr>
-						  <tr>
-						    <td>Magazzini Alimentari Riuniti</td>
-						    <td>Giovanni Rovelli</td>
-						    <td>Italy</td>
-						  </tr>
-						  <tr>
-						    <td>Magazzini Alimentari Riuniti</td>
-						    <td>Giovanni Rovelli</td>
-						    <td>Italy</td>
-						  </tr>
-						  <tr>
-						    <td>Magazzini Alimentari Riuniti</td>
-						    <td>Giovanni Rovelli</td>
-						    <td>Italy</td>
-						  </tr>
+						  <tbody>
+						  </tbody>
 						</table>
 					</td>
 				</tr>
@@ -184,6 +128,67 @@ tr:nth-child(even) {
 	</tr>
 
 </table>
+<script>
+
+function patientSearch(){
+	 $("#tab tbody").empty();
+	var data = {
+			firstname : document.getElementById("firstname").value,
+			lastname : document.getElementById("lastname").value,
+			cell : document.getElementById("cell").value,
+			email : document.getElementById("email").value,
+			address : document.getElementById("address").value,
+			fileno : document.getElementById("fileno").value,
+			barcode : document.getElementById("barcode").value,
+			casenumber : document.getElementById("caseNumber").value,
+	}
+	$.ajax({
+		  type: "GET",
+		  url: "/PatientSearch",
+		  data: data,
+		  success: function(data,status){
+			  if(data.length == 0){
+				  alert("No such Patient Found");
+				  document.getElementById("firstName").value= "";
+				  document.getElementById("lastName").value= "";
+				  document.getElementById("mobileNumber").value= "";
+				  document.getElementById("emailAddr").value= "";
+				  document.getElementById("homeAddr").value= "";
+				  document.getElementById("FileNo").value= "";
+				  document.getElementById("barCode").value= "";
+				  document.getElementById("caseNumber").value= "";
+			  }else{
+				  
+				  $("#tab tbody").append(
+  		  				"<tr>" +
+                                 "<th>" + "Case No." + "</th>" +
+                                 "<th>" + "First name" + "</th>" +
+                                 "<th>" + "Last name" + "</th>" +
+                                 "<th>" + "SurName/Fileno." + "</th>" +
+                                 "<th>"+ "Detail" +"</th>" +
+                             "</tr>");
+				  
+				  $.each(data, function (i) {
+					  
+					  $("#tab tbody").append(
+                		  				"<tr>" +
+                		  				"<td>" + data[i].casenumber + "</td>" +
+                		  				"<td>" + data[i].firstname + "</td>" +
+                		  				"<td>" + data[i].lastname + "</td>" +
+                		  				"<td>" + data[i].fileno + "</td>" +
+                		  				"<td><button>"+"View Details" +"</button></td>" +
+                                           "</tr>");
+				  $("#tab tbody tr td").attr("id", data[i].casenumber);
+		    	  })}
+		    },
+		    error: function(data,status){
+		    	alert("Data: " + data + "\nStatus: " + status);
+		    },
+		  dataType: 'json'
+		});
+	
+}
+</script>
 
 </body>
 </html>

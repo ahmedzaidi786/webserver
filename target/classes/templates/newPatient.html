@@ -62,7 +62,7 @@ tr:nth-child(even) {
 		<td style="height:10%;text-align:center;padding:0px">
 			<table style="height:100%; width:100%">
 			<tr>
-				<td style="height:100%; width:100%"> <img src="images/logo2.png" style="float:left" />
+				<td style="height:100%; width:100%"> <img src="images/logo2.png" style="float:left"  onclick="window.location.href='home.html'" />
 				<td>
 					<a style="text-transform:capitalize;"><b>Welcome <span id="user_name" th:text="${#httpServletRequest.remoteUser}" /></b></a>
 				</td>
@@ -76,15 +76,19 @@ tr:nth-child(even) {
 		</td>
 	</tr>
 	<tr>
-		<td>
-		<p>First name: <input type="text" th:field="*{firstname}" /></p>
-		<p>Last name: <input type="text" th:field="*{lastname}" /></p>
- 		<p>Mobile: <input type="number" th:field="*{mobile}" /></p>
-		<p>Email: <input type="email" th:field="*{email}" /></p>
-		<p>Address: <input type="text" th:field="*{address}" /></p>
-		<p>file no: <input type="text" th:field="*{fileno}" /></p>
-		<p>Patient Since: <input type="date" th:field="*{since}"/></p> 
-		<p>Bar code: <input type="text" th:field="*{barcode}" /></p> 
+		<td style="text-align: -webkit-center;">
+		<h1><b> NEW PATIENT Entry</b></h1>
+		<p><b>Patient picture upload:</b> <input id="pImage" type='file' accept="image/png, image/jpeg" onchange="readURL(this);" /></p>
+    	<p><img id="blah" src="#" alt="Patient image" /><input type="button" value="Remove" onclick="removeImage()"></input></p>
+		<p><b>First name:</b> <input type="text" th:field="*{firstname}" /></p>
+		<p><b>Last name:</b> <input type="text" th:field="*{lastname}" /></p>
+ 		<p><b>cell:</b> <input type="number" th:field="*{cell}" /></p>
+		<p><b>Email:</b> <input type="email" th:field="*{email}" /></p>
+		<p><b>Address:</b> <input type="text" th:field="*{address}" /></p>
+		<p><b>file no: </b><input type="text" th:field="*{fileno}" /></p>
+		<p><b>Patient Since:</b> <input type="date" th:field="*{since}"/></p> 
+		<p><b>Bar code:</b> <input type="text" th:field="*{barcode}" /></p> 
+		<p><b>Patient Word.doc upload:</b> <input id="pWord" type='file' accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" onchange="readWord(this);" /></p>
 		<p><input type="button" value="Submit" onclick="submitForm()"/></p>
 		</td>
 	</tr>
@@ -93,6 +97,8 @@ tr:nth-child(even) {
 
 <script>
 /*<![CDATA[*/
+var patientImage ="";
+var patientWord = "";
 window.onload = function(e){
 	var token = $("meta[name='_csrf']").attr("content");
 	var header = $("meta[name='_csrf_header']").attr("content");
@@ -116,25 +122,83 @@ window.onload = function(e){
 	document.getElementById("since").value = today;
 }
 function submitForm(){
+	if(document.getElementById("firstname").value =="" ){
+		 alert("Please enter first name");
+	}else if(document.getElementById("lastname").value ==""){
+		 alert("Please enter Last name");
+	}else{
 	var data = {
 			firstname : document.getElementById("firstname").value,
 			lastname : document.getElementById("lastname").value,
-			mobile : document.getElementById("mobile").value,
+			cell : document.getElementById("cell").value,
 			email : document.getElementById("email").value,
 			address : document.getElementById("address").value,
 			fileno : document.getElementById("fileno").value,
 			since : new Date(document.getElementById("since").value),
 			barcode : document.getElementById("barcode").value,
+			picture : patientImage,
+			wordfile : patientWord,
+			casenumber : "",
 	}
 	$.ajax({
 		  type: "POST",
 		  url: "/newPatientSubmit",
 		  data: data,
 		  success: function(data,status){
-		      alert("Data: " + data + "\nStatus: " + status);
+		      if(data.length == 0){
+		    	  alert("New Patient saved")
+			        document.getElementById("firstname").value ="";
+					document.getElementById("lastname").value="";
+					document.getElementById("cell").value="";
+					document.getElementById("email").value="";
+					document.getElementById("address").value="";
+					document.getElementById("fileno").value="";
+					document.getElementById("barcode").value="";
+		      }else{
+		    	  alert("Patient Already exist")
+		      }
+		    },
+		    error: function(data,status){
+		    	alert("Data: " + data + "\nStatus: " + status);
 		    },
 		  dataType: 'json'
 		});
+	}
+}
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.addEventListener("load", function () {
+	    	patientImage = reader.result;
+	    	$('#blah')
+             .attr('src', reader.result)
+             .width(200)
+             .height(200);
+	    	
+		}, false);
+		
+		if (input.files[0]) {
+		  reader.readAsDataURL(input.files[0]);
+		}
+    }
+}
+
+function removeImage(){
+	document.getElementById('blah').files='';
+	document.getElementById('pImage').value='';
+}
+
+function readWord(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+        	patientWord = reader.result;
+        };
+
+       patientWord = reader.readAsDataURL(input.files[0]);
+    }
 }
 /*]]>*/
 </script>
