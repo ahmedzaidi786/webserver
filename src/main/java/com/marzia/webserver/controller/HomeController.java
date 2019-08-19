@@ -21,8 +21,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.marzia.webserver.dao.model.PatientVisit;
+import com.marzia.webserver.dao.model.PatientVisitExample;
 import com.marzia.webserver.dao.model.Patients;
 import com.marzia.webserver.dao.model.PatientsExample;
+import com.marzia.webserver.dao.repository.PatientVisitMapper;
 import com.marzia.webserver.dao.repository.PatientsMapper;
 
 import sun.util.logging.resources.logging;
@@ -36,10 +39,19 @@ public class HomeController {
 	@Autowired
 	 private PatientsMapper pm;
 	
+	@Autowired
+	 private PatientVisitMapper pvm;
+	
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String home(HttpServletRequest req) {
 		log.info("home: " + req);
 		return "home";
+	}
+	
+	@RequestMapping(value = "/cases", method = RequestMethod.GET)
+	public String cases(HttpServletRequest req) {
+		log.info("cases: " + req);
+		return "cases";
 	}
 	
 	@RequestMapping(value = "/newPatient", method = RequestMethod.GET)
@@ -108,8 +120,26 @@ public class HomeController {
 		}
 		
 		patient = pm.selectByExample(pe);
-		log.info("inside patient list" + patient);
 		return patient;
 	}
 
+	
+	@ResponseBody
+	@RequestMapping(value = "/ViewDetail", method = RequestMethod.GET)
+	public Patients ViewDetail(@RequestParam("pk") Integer pk) {
+		Patients patient; 
+		patient =  pm.selectByPrimaryKey(pk);
+		return patient;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/saveVisit", method = RequestMethod.GET)
+	public List<PatientVisit> saveVisit(@Valid PatientVisit patientvisit,BindingResult bindingResult,Model model,
+			@RequestParam(value="visitdate") @DateTimeFormat(pattern="MMddyyyy") String visitdate) {
+		PatientVisitExample pve = new PatientVisitExample();
+		List<PatientVisit> patient = null; 
+		log.info("save visit = " + model);
+		return patient;
+	}
+	
 }
